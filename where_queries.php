@@ -36,8 +36,9 @@ echo'<!DOCTYPE html>
 <script type="text/javascript">
   var treeData = [';
 
-#following php code is released under gpl
-#copyright Kristoffer Bernssen
+#following php code is released under Attribution 4.0 International (CC BY 4.0)
+#copyright Kristoffer Bernssen 2016
+#licence information: https://creativecommons.org/licenses/by/4.0/
 
 $checkfiletype=$_POST['filetype'];
 if(empty($checkfiletype)){$checkfiletype='php';}
