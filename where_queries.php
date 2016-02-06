@@ -40,9 +40,9 @@ echo'<!DOCTYPE html>
 #copyright Kristoffer Bernssen 2016
 #licence information: https://creativecommons.org/licenses/by/4.0/
 
-$checkfiletype=$_POST['filetype'];
+if(isset($_POST['filetype'])){$checkfiletype=$_POST['filetype'];}
 if(empty($checkfiletype)){$checkfiletype='php';}
-$matchdata=$_POST['tomatch'];
+if(isset($_POST['tomatch'])){$matchdata=$_POST['tomatch'];}
 if(empty($matchdata)){$matchdata='mysql_query';}
 error_reporting(0);$uniq=1;
 $fileids=array();$dirids=array();$node=array();#$foldernode=array();
@@ -59,7 +59,7 @@ function filedirs($dirstart,$level,$theidparent) {
     while (false != ($entry = readdir($handle))) {
       if ($entry != "." && $entry != "..") {
           if(filetype($dirextra.$entry)=="dir"){
-              $dirs[$diri]=$entry;++$diri;$thefile="";
+              $dirs[$diri]=$dirextra.$entry;++$diri;$thefile="";
           }elseif($entry!=='config.inc.php'){
             preg_match('/\.([^\.]*)$/i',$entry,$match);
             $thefile=$match[1];
@@ -289,7 +289,7 @@ Match data:<input type="text" value="'.$matchdata.'" name="tomatch">
   <div>Selected root nodes: <span id="echoSelectionRoots3">-</span></div>
   <div>Active node: <span id="echoActive">-</span></div>
   <p class="description">
-    This tree has <b>checkoxes and selectMode 3 (hierarchical multi-selection)</b> enabled.<br>
+    This tree has <b>checkboxes and selectMode 3 (hierarchical multi-selection)</b> enabled.<br>
     A double-click handler selects the node.<br>
     A keydown handler selects on [space].
   </p>
